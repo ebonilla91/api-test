@@ -35,8 +35,10 @@
     "dataSource": "db",
     "public": false
   },
-  "Prueba": {
+  "mascota": {
     "dataSource": "mysqlDS",
-    "public": true
+    "public": true,
+    "$promise": {},
+    "$resolved": true
   }
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cliente api</title>
+</head>
+<body>
+<h1>Este es un ejemplo de titulo</h1>
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script src="~/Scripts/knockout-2.2.0.debug.js"></script>
+<script src="~/Scripts/knockout.mapping-latest.debug.js"></script>
+
+<table>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+  </tr>
+  </thead>
+  <tbody data-bind="foreach: customerList">
+  <tr>
+    <td data-bind="text: Id"></td>
+    <td data-bind="text: Name"></td>
+  </tr>
+  </tbody>
+</table>
+<br/>
+
+<input type="button" id="btnGetCustomers" value="Get Customers" data-bind="click: getCustomers">
+
+</body>
+</html>
+
+
+<script>
+  function customerViewModel() {
+    var self = this;
+
+    self.customerList = ko.observableArray();
+
+    self.getCustomers = function () {
+      $.ajax({
+        type: 'GET',
+        url: 'http://10.0.0.2:8081/CustomerService/customers',
+        contentType: "application/javascript",
+        dataType: "jsonp",
+        success: function(data) {
+          var observableData = ko.mapping.fromJS(data);
+          var array = observableData();
+          self.customerList(array);
+        },
+        error:function(jq, st, error){
+          alert(error);
+        }
+      });
+    };
+  }
+
+  $(document).ready(function () {
+    ko.applyBindings(new customerViewModel());
+  });
+</script>

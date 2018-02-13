@@ -1,0 +1,17 @@
+{
+  "name": "api",
+  "description": "api",
+  "main": "server/server.js",
+  "authors": [
+    "Erving Bonilla <ervingjbonilla@gmail.com>"
+  ],
+  "license": "UNLICENSED",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
