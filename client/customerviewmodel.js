@@ -8,25 +8,28 @@ function petViewModel() {
   self.specie = ko.observable('');
 
   self.getPets = function () {
+    self.idPet = ko.observable();
+    self.namePet = ko.observable('');
+    self.breed = ko.observable('');
+    self.specie = ko.observable('');
     $.getJSON("http://localhost:3000/api/mascota", function(data) {
       var observableData = ko.mapping.fromJS(data);
       var array = observableData();
       self.petsList(array);
-      console.log(self.petsList());
     })
   };
 
   self.postPets = function(){
-    console.log("entro en la funcion");
     var data = {
+      nombre : self.namePet,
       id : self.idPet,
-      name : self.namePet,
-      breed : self.breed,
-      specie : self.specie
+      raza : self.breed,
+      especie : self.specie
     };
-    console.log(data);
-    $.post("http://localhost:3000/api/mascota", data, function(returnedData) {
-      // This callback is executed if the post was successful
+    var jsonData = ko.toJS(data);
+    console.log(jsonData);
+    $.post("http://localhost:3000/api/mascota", jsonData, function(returnedData) {
+      success: self.getPets()
     })
   }
 }
