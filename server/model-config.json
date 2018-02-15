@@ -36,7 +36,7 @@
     "public": false
   },
   "mascota": {
-    "dataSource": "psqlDS",
+    "dataSource": "mysqlDS",
     "public": true,
     "$promise": {},
     "$resolved": true

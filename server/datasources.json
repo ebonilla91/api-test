@@ -3,14 +3,12 @@
     "name": "db",
     "connector": "memory"
   },
-  "psqlDS": {
+  "mysqlDS": {
     "host": "localhost",
-    "port": 5432,
-    "url": "",
-    "database": "postgres",
-    "password": "postgres",
-    "name": "psqlDS",
-    "user": "postgres",
-    "connector": "postgresql"
+    "port": 3306,
+    "database": "api-test",
+    "name": "mysqlDS",
+    "user": "root",
+    "connector": "mysql"
   }
 }
